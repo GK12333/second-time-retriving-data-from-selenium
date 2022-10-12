@@ -18,9 +18,9 @@ public class BasicClass1
 
 	WebDriver driver;
 
-@Test(dataProvider="dp1")
+@Test()
 
-	public void Testlogin(String username,String Password) throws Exception
+	public void Testlogin() throws Exception
 	{
 		WebDriverManager.chromedriver().setup();
 
@@ -31,8 +31,8 @@ public class BasicClass1
 
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
-		driver.findElement(By.name("username")).sendKeys(username);
-		driver.findElement(By.name("password")).sendKeys(Password);
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='oxd-sidepanel-header']/a")).isDisplayed());
 		Thread.sleep(3000);
@@ -40,21 +40,21 @@ public class BasicClass1
 
 
 	}
-	
-	@DataProvider()
-	public Object[][] dp1()
-	{
-		Object[][] data=new Object[2][2];
-		
-		data[0][0]="Admin";
-		data[0][1]="admin123";
-		
-		data[1][0]="Admin";
-		data[1][1]="admin1234";
-		
-		
-		return data;
-	}
+//	
+//	@DataProvider()
+//	public Object[][] dp1()
+//	{
+//		Object[][] data=new Object[2][2];
+//		
+//		data[0][0]="Admin";
+//		data[0][1]="admin123";
+//		
+//		data[1][0]="Admin";
+//		data[1][1]="admin1234";
+//		
+//		
+//		return data;
+//	}
 	
 }
 
